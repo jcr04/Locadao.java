@@ -41,5 +41,5 @@ Content-Type: application/json
     "precoDiaria": 100.0
 }
 ```
-Para mais informações sobre como utilizar a API, consulte a documentação completa disponível em [link para a documentação].
+Para mais informações sobre como utilizar a API, consulte a documentação completa disponível em [Codedoc](https://github.com/jcr04/Locadao.java/blob/main/Codedoc.md).
 
