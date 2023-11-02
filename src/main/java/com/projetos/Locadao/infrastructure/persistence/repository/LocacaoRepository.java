@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface LocacaoRepository extends JpaRepository<Locacao, Long> {
 
+    @Override
+    Locacao save(Locacao locacao);
+
     List<Locacao> findByDataInicioBetween(LocalDate start, LocalDate end);
 
     @Query("SELECT l FROM Locacao l WHERE l.veiculo.id = :veiculoId")

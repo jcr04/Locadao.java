@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 
+    @Override
+    Veiculo save(Veiculo veiculo);
+
     List<Veiculo> findByMarca(String marca);
 
     @Query("SELECT v FROM Veiculo v WHERE v.precoDiaria <= :precoMax")
