@@ -40,10 +40,6 @@ Este documento fornece informações detalhadas sobre como interagir com a API p
 
 ### Locações
 
-... [outros endpoints de locações]
-
-### Locações
-
 - **Listar Locações**
   - Método: `GET`
   - Endpoint: `/locacoes`
