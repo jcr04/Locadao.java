@@ -40,6 +40,6 @@ Content-Type: application/json
     "ano": 2020,
     "precoDiaria": 100.0
 }
-
+```
 Para mais informações sobre como utilizar a API, consulte a documentação completa disponível em [link para a documentação].
 
