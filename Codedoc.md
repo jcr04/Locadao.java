@@ -47,24 +47,26 @@ Este documento fornece informações detalhadas sobre como interagir com a API p
   - Resposta de Exedmplo:
     ```json
     {
-        "id": 7,
-        "marca": "Jeep",
-        "modelo": "Compass",
-        "placa": "cac-3006",
-        "ano": 2023,
-        "precoDiaria": 150.0,
-        "alugado": true,
-        "cliente": {
-            "id": 4,
-            "nome": "Raimundo José",
-            "cpf": "123.456.359-99",
-            "dataNascimento": "1995-07-04",
-            "endereco": "Rua José Maria Santiago, 505, Centro, São José de Ribamar",
-            "veiculos": [
-                7
-            ]
-        },
-        "locacoes": []
+    "id": 8,
+    "marca": "Fiat",
+    "modelo": "Argo",
+    "placa": "dec-1847",
+    "ano": 2023,
+    "precoDiaria": 150.0,
+    "alugado": true,
+    "cliente": {
+        "id": 5,
+        "nome": "Pedriana Pavão",
+        "cpf": "323.276.389-22",
+        "dataNascimento": "1987-07-28",
+        "endereco": "Rua José Maria Santiago, 505, Centro, São José de Ribamar",
+        "idade": 36,
+        "cnh": true,
+        "veiculos": [
+            8
+        ]
+    },
+    "locacoes": []
     }
     ```
 
