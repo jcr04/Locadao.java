@@ -22,8 +22,10 @@ public class ClienteService {
         cliente.setCpf(clienteDTO.getCpf());
         cliente.setDataNascimento(clienteDTO.getDataNascimento());
         cliente.setEndereco(clienteDTO.getEndereco());
+        cliente.calcularIdade();  // Calculando a idade e atualizando o valor de cnh
         return clienteRepository.save(cliente);
     }
+
 
     @Transactional(readOnly = true)
     public List<Cliente> findAll() {
