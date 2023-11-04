@@ -28,18 +28,7 @@ spring.jpa.show-sql=true
 ```
 
 ### Exemplo de Requisição
+![Screenshot_1](https://github.com/jcr04/Locadao.java/assets/70778525/1018cba6-b5a3-4b9f-a4d0-e7d7c6d7644f)
 
-```http
-POST /veiculos HTTP/1.1
-Host: localhost:8081
-Content-Type: application/json
-
-{
-    "marca": "Fiat",
-    "modelo": "Uno",
-    "ano": 2020,
-    "precoDiaria": 100.0
-}
-```
 Para mais informações sobre como utilizar a API, consulte a documentação completa disponível em [Codedoc](https://github.com/jcr04/Locadao.java/blob/main/Codedoc.md).
 
