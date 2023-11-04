@@ -2,6 +2,7 @@ package com.projetos.Locadao.application.dto;
 
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class LocacaoDTO {
@@ -10,4 +11,5 @@ public class LocacaoDTO {
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private double valorTotal;
+    private List<LocacaoDTO> locacoes;
 }

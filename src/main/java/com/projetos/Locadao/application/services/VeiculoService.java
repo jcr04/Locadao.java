@@ -1,12 +1,10 @@
 package com.projetos.Locadao.application.services;
 
 import com.projetos.Locadao.domain.model.Cliente;
+import com.projetos.Locadao.domain.model.Locacao;
 import com.projetos.Locadao.domain.model.Veiculo;
 import com.projetos.Locadao.domain.repository.Veiculorepository;
-import com.projetos.Locadao.infrastructure.Exceptions.ClienteNaoEncontradoException;
-import com.projetos.Locadao.infrastructure.Exceptions.NegocioException;
-import com.projetos.Locadao.infrastructure.Exceptions.VeiculoAlugadoException;
-import com.projetos.Locadao.infrastructure.Exceptions.VeiculoNaoEncontradoException;
+import com.projetos.Locadao.infrastructure.Exceptions.*;
 import com.projetos.Locadao.infrastructure.persistence.repository.ClienteRepository;
 import com.projetos.Locadao.infrastructure.persistence.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +39,11 @@ public class VeiculoService {
         return VeiculoRepository.existsByIdAndClienteId(veiculoId, null);
     }
 
+    public Veiculo findVeiculoWithLocacoes(Long veiculoId) {
+        return veiculoRepository.findById(veiculoId)
+                .orElseThrow(() -> new ResourceNotFoundException("Veiculo não encontrado"));
+    }
+
     @Transactional
     public Veiculo alugarVeiculo(Long veiculoId, Long clienteId) {
         logger.info("Alugando veiculo {} para cliente {}", veiculoId, clienteId);
@@ -58,8 +62,18 @@ public class VeiculoService {
             throw new VeiculoAlugadoException("Veículo já está alugado");
         }
 
+        if (veiculo.isAlugado()) {
+            throw new VeiculoAlugadoException("Veículo já está alugado");
+        }
+
         veiculo.setCliente(cliente);
         veiculo.setAlugado(true);
+
+        Locacao novaLocacao = new Locacao();
+        novaLocacao.setVeiculo(veiculo);
+        novaLocacao.setDataInicio(LocalDate.now());
+
+        veiculo.getLocacoes().add(novaLocacao);
 
         Veiculo veiculoSalvo = veiculoRepository.save(veiculo);
         logger.info("Veículo {} alugado com sucesso para cliente {}", veiculoId, clienteId);

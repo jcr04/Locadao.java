@@ -45,9 +45,10 @@ public class VeiculoController {
     }
 
     @PostMapping("/{veiculoId}/alugar/{clienteId}")
-    public ResponseEntity<Veiculo> alugarVeiculo(@PathVariable Long veiculoId, @PathVariable Long clienteId) {
+    public ResponseEntity<VeiculoDTO> alugarVeiculo(@PathVariable Long veiculoId, @PathVariable Long clienteId) {
         Veiculo veiculo = veiculoService.alugarVeiculo(veiculoId, clienteId);
-        return ResponseEntity.ok(veiculo);
+        VeiculoDTO veiculoDTO = modelMapper.map(veiculo, VeiculoDTO.class);
+        return ResponseEntity.ok(veiculoDTO);
     }
 
 }
