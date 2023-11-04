@@ -68,8 +68,7 @@ Este documento fornece informações detalhadas sobre como interagir com a API p
   - Endpoint: `/clientes/{id}`
   - Parâmetros: `id` (ID do cliente)
   - Resposta: Objeto representando o cliente.
-    ```
-    json
+    ```json
     {
         "id": 6,
         "nome": "Luydson",
