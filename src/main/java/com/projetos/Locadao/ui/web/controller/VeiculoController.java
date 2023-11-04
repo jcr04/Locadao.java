@@ -5,6 +5,7 @@ import com.projetos.Locadao.application.services.VeiculoService;
 import com.projetos.Locadao.domain.model.Veiculo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +43,11 @@ public class VeiculoController {
     public void remover(@PathVariable Long veiculoId) {
         veiculoService.deleteById(veiculoId);
     }
+
+    @PostMapping("/{veiculoId}/alugar/{clienteId}")
+    public ResponseEntity<Veiculo> alugarVeiculo(@PathVariable Long veiculoId, @PathVariable Long clienteId) {
+        Veiculo veiculo = veiculoService.alugarVeiculo(veiculoId, clienteId);
+        return ResponseEntity.ok(veiculo);
+    }
+
 }
