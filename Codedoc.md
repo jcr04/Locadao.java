@@ -53,24 +53,8 @@ Este documento fornece informações detalhadas sobre como interagir com a API p
     "placa": "dec-1847",
     "ano": 2023,
     "precoDiaria": 150.0,
-    "alugado": true,
-    "cliente": {
-        "id": 5,
-        "nome": "Pedriana Pavão",
-        "cpf": "323.276.389-22",
-        "dataNascimento": "1987-07-28",
-        "endereco": "Rua José Maria Santiago, 505, Centro, São José de Ribamar",
-        "idade": 36,
-        "cnh": true,
-        "veiculos": [
-            8
-        ]
-    },
-    "locacoes": []
     }
     ```
-
-
 
 ### Clientes
 
@@ -84,6 +68,39 @@ Este documento fornece informações detalhadas sobre como interagir com a API p
   - Endpoint: `/clientes/{id}`
   - Parâmetros: `id` (ID do cliente)
   - Resposta: Objeto representando o cliente.
+    ```
+    json
+    {
+        "id": 6,
+        "nome": "Luydson",
+        "cpf": "323.486.889-69",
+        "dataNascimento": "1998-11-28",
+        "endereco": "74 Tv. Benício Fontenele, São Luis",
+        "idade": 24,
+        "cnh": true,
+        "veiculos": [
+            {
+                "id": 9,
+                "marca": "Fiat",
+                "modelo": "Argo",
+                "placa": "dec-5647",
+                "ano": 2021,
+                "precoDiaria": 100.0,
+                "alugado": true,
+                "cliente": 6,
+                "locacoes": [
+                    {
+                        "id": 5,
+                        "veiculo": 9,
+                        "dataInicio": "2023-11-10",
+                        "dataFim": "2023-11-20",
+                        "valorTotal": 500.0
+                    }
+                ]
+            }
+        ]
+    }
+    ```
 
 - **Cadastrar Cliente**
   - Método: `POST`
