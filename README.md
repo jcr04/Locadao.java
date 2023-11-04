@@ -28,7 +28,7 @@ spring.jpa.show-sql=true
 ```
 
 ### Exemplo de Requisição
-![Screenshot_1](https://github.com/jcr04/Locadao.java/assets/70778525/1018cba6-b5a3-4b9f-a4d0-e7d7c6d7644f)
+![Screenshot_3](https://github.com/jcr04/Locadao.java/assets/70778525/af893b8e-186a-4c4b-8885-929560a636e5)
 
 Para mais informações sobre como utilizar a API, consulte a documentação completa disponível em [Codedoc](https://github.com/jcr04/Locadao.java/blob/main/Codedoc.md).
 
