@@ -45,7 +45,7 @@ public class VeiculoService {
     }
 
     @Transactional
-    public Veiculo alugarVeiculo(Long veiculoId, Long clienteId) {
+    public Veiculo alugarVeiculo(Long veiculoId, Long clienteId, LocalDate dataFim) {
         logger.info("Alugando veiculo {} para cliente {}", veiculoId, clienteId);
         Veiculo veiculo = buscarVeiculo(veiculoId);
         Cliente cliente = buscarCliente(clienteId);
@@ -62,16 +62,13 @@ public class VeiculoService {
             throw new VeiculoAlugadoException("Veículo já está alugado");
         }
 
-        if (veiculo.isAlugado()) {
-            throw new VeiculoAlugadoException("Veículo já está alugado");
-        }
-
         veiculo.setCliente(cliente);
         veiculo.setAlugado(true);
 
         Locacao novaLocacao = new Locacao();
         novaLocacao.setVeiculo(veiculo);
         novaLocacao.setDataInicio(LocalDate.now());
+        novaLocacao.setDataFim(dataFim); // Define a data de fim da locação
 
         veiculo.getLocacoes().add(novaLocacao);
 

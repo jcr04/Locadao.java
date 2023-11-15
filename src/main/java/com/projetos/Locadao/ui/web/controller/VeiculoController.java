@@ -5,9 +5,11 @@ import com.projetos.Locadao.application.services.VeiculoService;
 import com.projetos.Locadao.domain.model.Veiculo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,10 +47,13 @@ public class VeiculoController {
     }
 
     @PostMapping("/{veiculoId}/alugar/{clienteId}")
-    public ResponseEntity<VeiculoDTO> alugarVeiculo(@PathVariable Long veiculoId, @PathVariable Long clienteId) {
-        Veiculo veiculo = veiculoService.alugarVeiculo(veiculoId, clienteId);
+    public ResponseEntity<VeiculoDTO> alugarVeiculo(@PathVariable Long veiculoId,
+                                                    @PathVariable Long clienteId,
+                                                    @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio) {
+        Veiculo veiculo = veiculoService.alugarVeiculo(veiculoId, clienteId, dataInicio);
         VeiculoDTO veiculoDTO = modelMapper.map(veiculo, VeiculoDTO.class);
         return ResponseEntity.ok(veiculoDTO);
     }
+
 
 }
